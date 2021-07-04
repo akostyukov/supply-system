@@ -8,5 +8,5 @@ class ShopPositionBase(BaseModel):
     price: Decimal
 
 
-class ShopPositionInDB(ShopPositionBase):
+class ShopPositionOut(ShopPositionBase):
     id: int

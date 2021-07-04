@@ -5,5 +5,5 @@ class UserBase(BaseModel):
     username: str
 
 
-class UserInDB(UserBase):
+class UserOut(UserBase):
     id: int

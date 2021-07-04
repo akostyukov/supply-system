@@ -3,12 +3,12 @@ from typing import List
 from fastapi import APIRouter
 
 from models.shop_position import ShopPosition
-from schemas.shop_position import ShopPositionInDB, ShopPositionBase
+from schemas.shop_position import ShopPositionBase, ShopPositionOut
 
 router = APIRouter(prefix="/shop", tags=["Shop"])
 
 
-@router.get("/", response_model=List[ShopPositionInDB])
+@router.get("/", response_model=List[ShopPositionOut])
 async def get_shop_positions():
     shop_positions = await ShopPosition.all()
     return shop_positions
