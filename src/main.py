@@ -6,9 +6,8 @@ from endpoints import order, shop_position, user
 
 app = FastAPI()
 
-routers = [user.router, shop_position.router, order.router]
-
-for router in routers:
-    app.include_router(router)
+app.include_router(user.router)
+app.include_router(shop_position.router)
+app.include_router(order.router)
 
 register_tortoise(app, TORTOISE_ORM, generate_schemas=True)

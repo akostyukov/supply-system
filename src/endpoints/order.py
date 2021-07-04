@@ -22,8 +22,9 @@ async def get_orders(user_id: int):
 
 @router.get("/monthly-report/{user_id}", response_model=OrderMonthlyReport)
 async def get_monthly_report(user_id: int, month: int):
-    orders = await Order.filter(user_id=user_id).prefetch_related("shop_positions")
-    orders = [order for order in orders if order.datetime.month == month]
+    orders = await Order.filter(
+        user_id=user_id, datetime__month=month
+    ).prefetch_related("shop_positions")
 
     summary_order_price = 0
 
